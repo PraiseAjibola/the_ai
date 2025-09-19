@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encouraging the use of AI</title>
+    <link rel="stylesheet" href="Encourage_AI.css" />
+    <style>
+      * {
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+      /* Base Styles */
+      body {
+        margin: 0;
+        padding: 0 5%;
+        background-color: black;
+        color: white;
+        font-family: Roboto, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+
+        padding-top: 60px; /* adjust based on your navbar height */
+      }
+
+      /* Header Section */
+      header {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 2rem 1em;
+        justify-content: space-between;
+        position: relative;
+        position: fixed;
+        top: 0;
+        flex-wrap: wrap;
+        /* left: 0; */
+        /* width: 100%; */
+        z-index: 1000; /* Keeps it on top of other elements */
+        background-color: #000; /* or any color */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav_logos {
+        display: flex;
+        height: 20%;
+        align-items: center;
+        margin: 0 0 0 8%;
+
+    
+      }
+
+      .nav_logos p {
+        font-size: 1.3rem;
+        margin: 0;
+         height: 40px;
+      }
+
+      .nav_logos img {
+        width: 40px;
+        height: 40px;
+      }
+
+      /* Hamburger Menu Styles */
+      .menu-toggle {
+        display: none;
+        position: absolute;
+        opacity: 0;
+        /* z-index: 1001; */
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        /* z-index: 1000; */
+        position: relative;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+        transition: 0.3s;
+        transform-origin: center;
+      }
+
+      /* Hamburger Animation */
+      .menu-toggle:checked + .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .menu-toggle:checked + .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle:checked + .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .ai_templates {
+        display: flex;
+      }
+
+      .ai_templates ul {
+        gap: 2rem;
+        list-style: none;
+        display: flex;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0 5%;
+        width: 800px;
+        flex-wrap: wrap;
+        /* justify-content: end; */
+      }
+
+      .ai_templates li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .ai_templates li a:hover {
+        color: purple;
+      }
+
+      /* Hero Section */
+      .ai_section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: #1c1c1e;
+        border-radius: 15px;
+        padding-top: 4rem;
+        /* margin: 1rem 0; */
+        border-radius: 10px;
+        gap: 2rem;
+        min-height: 300px;
+      }
+
+      .ai_leftchild {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .ai_text h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .ai_text p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        /* margin-bottom: 2rem; */
+        opacity: 0.9;
+      }
+
+      span {
+        color: purple;
+      }
+
+      .ai_button {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+      }
+
+      .ai_button a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .ai_button .btn1,
+      .btn2 {
+        border: none;
+        background-color: purple;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn1:hover,
+      .btn2:hover {
+        background-color: #8b5cf6;
+        transform: translateY(-2px);
+      }
+
+      .ai_rightchild {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 250px;
+        width: 10%;
+      }
+
+      .ai_rightchild img {
+        max-width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+        border-radius: 10px;
+      }
+
+      /* Logo Section */
+      .ai_section2_logo {
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+        overflow: hidden;
+        margin: 2rem 0;
+        padding: 1rem 0;
+        width: 100%;
+        gap: 2rem;
+        /* flex-wrap: wrap; */
+      }
+
+      .logo {
+        height: 40px;
+        width: auto;
+        animation: rotate-logo 10s linear infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes rotate-logo {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+      }
+
+      /* Section 3 - Creativity */
+      .ai_section3 {
+        margin: 6rem 0;
+      }
+
+      .ai_creativity h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+
+      .ai_creativity p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 4rem;
+        opacity: 0.9;
+      }
+
+      .ai_designs_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .ai_designs {
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        background-color: #1c1c1e;
+        border-radius: 10px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .ai_designs:hover {
+        transform: translateY(-5px);
+      }
+
+      .ai_designs img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+        background-color: #9333ea;
+        border-radius: 80px;
+      }
+
+      .ai_designs h5 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .ai_designs p {
+        font-size: 1rem;
+        opacity: 0.8;
+      }
+
+      /* Feature Sections */
+      .ai_section4,
+      .ai_section5,
+      .ai_section6 {
+        margin: 6rem 0;
+      }
+
+      .ai_free_resolution {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .ai_resolution {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .ai_resolution h5 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .ai_resolution p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .ai_rightchild_resolution {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        min-width: 300px;
+      }
+
+      .ai_rightchild_resolution img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      /* Section 7 - Reality */
+      .ai_section7 {
+        margin: 6rem 0;
+      }
+
+      .ai_reality h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+
+      .ai_reality p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 4rem;
+        opacity: 0.9;
+      }
+
+      .ai_comment_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .ai_comments1,
+      .ai_comments2 {
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .ai_comments1 {
+        background-color: #272829;
+      }
+
+      .ai_comments2 {
+        background-color: #1c1c1e;
+      }
+
+      .ai_comments1:hover,
+      .ai_comments2:hover {
+        transform: translateY(-5px);
+      }
+
+      .ai_comment_images {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+      }
+
+      .ai_comment_images h6,
+      .ai_comment_images h5 {
+        flex: 1;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .ai_comment_images img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        padding: 8px;
+        background-color: purple;
+        margin-left: 1rem;
+        flex-shrink: 0;
+      }
+
+      .ai_comment_images h2 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      /* Pricing Section */
+      .ai_plans_container {
+        margin: 6rem 0;
+      }
+
+      .ai_plans h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+
+      .ai_plans p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 4rem;
+        opacity: 0.9;
+      }
+
+      .pricing-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .pricing-option {
+        border: 3px solid rgba(221, 221, 221, 1);
+        padding: 2rem;
+        border-radius: 12px;
+        background-color: #1c1c1e;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 400px;
+      }
+
+      .pricing-option:hover {
+        border-color: plum;
+        background-color: purple;
+        transform: translateY(-5px);
+      }
+
+      .pricing-option-subcontainer {
+        flex: 1;
+      }
+
+      .pricing_option_subcontainer_content h5 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .pricing_option_subcontainer_content h1 {
+        font-size: 2.5rem;
+        margin: 0.5rem 0;
+      }
+
+      .pricing_option_subcontainer_content p {
+        margin-bottom: 2rem;
+        opacity: 0.8;
+      }
+
+      .pricing-options-ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      .pricing-options-ul li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .pricing-options-ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: purple;
+        font-weight: bold;
+      }
+
+      .pricing-options-btn {
+        color: purple;
+        background-color: transparent;
+        width: 100%;
+        border-radius: 8px;
+        padding: 1rem;
+        font-weight: 700;
+        font-size: 1rem;
+        border: 1px solid plum;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .pricing-option:hover .pricing-options-btn {
+        background-color: white;
+        color: black;
+      }
+
+      /* Customer Success Stories */
+      .ai_designs-container_contents {
+        background-color: #272829;
+        border-radius: 10px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .ai_designs-container_contents:hover {
+        transform: translateY(-5px);
+      }
+
+      .ai_designs1 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #333;
+      }
+
+      .ai_designs1 img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .ai_designs1 p {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .ai_designs_content h4 {
+        font-size: 1rem;
+        line-height: 1.6;
+        opacity: 0.9;
+        font-weight: normal;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 4rem 0;
+        margin-top: 4rem;
+      }
+
+      .faq-container {
+        display: flex;
+        background-color: #1c1c1e;
+        border-radius: 12px;
+        padding: 3rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .faq-left {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .faq-left h2 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .faq-left p {
+        color: #bbb;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .faq-right {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #333;
+      }
+
+      .faq-question {
+        position: relative;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        padding: 15px 0;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .faq-question:hover {
+        color: purple;
+      }
+
+      .faq-question::after {
+        content: "▼";
+        position: absolute;
+        right: 0;
+        color: purple;
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+      }
+
+      /* Insights Section */
+      .section-insights {
+        margin: 3rem 0;
+      }
+
+      .section-insights h1 {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+      }
+
+      .section-insights p {
+        color: #ccc;
+        /* margin-bottom: 3rem; */
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .card {
+        background-color: #1e1e1e;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 1.5rem;
+      }
+
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.875rem;
+        color: #aaa;
+        margin-bottom: 1rem;
+      }
+
+      .card-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #fff;
+        line-height: 1.4;
+      }
+
+      .read-more {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #a855f7;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        margin: 0 auto;
+        display: block;
+        width: fit-content;
+      }
+
+      .read-more:hover {
+        background-color: #9333ea;
+        transform: translateY(-2px);
+      }
+
+      /* AI Sights Section */
+      .ai-sights {
+        margin: 2rem 0;
+      }
+
+      .ai-sights-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1e1e1e;
+        border-radius: 1rem;
+        padding: 1rem;
+        gap: 2rem;
+      }
+
+      .ai-sights-leftchild {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .ai-sights-leftchild h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .ai-sights-leftchild p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .ai-sights-leftchild button {
+        background-color: purple;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .ai-sights-leftchild button:hover {
+        background-color: #8b5cf6;
+        transform: translateY(-2px);
+      }
+
+      .ai-sights-right-child {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        min-width: 250px;
+      }
+
+      .ai-sights-right-child img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      /* Mobile Responsive Styles */
+      @media (max-width:2500px){
+        html{
+          overflow-x: auto;
+        }
+      }
+      @media screen and (max-width:900px) and (min-width:700px){
+        .ai_templates ul{
+          width: 668px;
+          padding-right: 2rem;
+          padding-left: 0;
+
+        }
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 0 3%;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .ai_templates {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 80%;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(10px);
+          transition: left 0.3s ease;
+          z-index: 999;
+          padding-top: 80px;
+        }
+
+        .menu-toggle:checked ~ .ai_templates {
+          left: 0;
+        }
+
+        .ai_templates ul {
+          flex-direction: column;
+          gap: 2rem;
+          align-items: flex-start;
+          padding: 2rem;
+        }
+
+        .ai_templates li a {
+          font-size: 1.2rem;
+          padding: 1rem 0;
+          display: block;
+          width: 100%;
+        }
+
+        nav {
+          position: relative;
+        }
+
+        .ai_section {
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem 1rem;
+          gap: 2rem;
+        }
+
+        .ai_leftchild {
+          order: 1;
+        }
+
+        .ai_rightchild {
+          order: 2;
+        }
+
+        .ai_section5 .ai_free_resolution {
+          flex-direction: column-reverse;
+        }
+
+        .ai_section6 .ai_free_resolution {
+          flex-direction: column;
+        }
+
+        .ai_free_resolution {
+          flex-direction: column;
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .ai_section2_logo {
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .logo {
+          height: 30px;
+        }
+
+        .faq-container {
+          flex-direction: column;
+          padding: 2rem;
+        }
+
+        .pricing-options {
+          grid-template-columns: 1fr;
+        }
+
+        .ai_designs_container {
+          grid-template-columns: 1fr;
+        }
+
+        .ai_comment_container {
+          grid-template-columns: 1fr;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .ai-sights-container {
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 0 2%;
+        }
+
+        .ai_section {
+          padding: 1.5rem 1rem;
+        }
+
+        .ai_button {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .btn1,
+        .btn2 {
+          width: 100%;
+          max-width: 200px;
+        }
+
+        .faq-container {
+          padding: 1.5rem;
+        }
+
+        .pricing-option {
+          padding: 1.5rem;
+        }
+
+        .ai_designs {
+          padding: 1.5rem;
+        }
+
+        .ai_comments1,
+        .ai_comments2 {
+          padding: 1.5rem;
+        }
+
+        .ai_templates {
+          width: 90%;
+        }
+
+        .ai-sights-container {
+          padding: 1.5rem;
+        }
+      }
+      @media (max-width: 1092px) {
+        .ai-footer-container-links ul {
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 50px;
+        }
+      }
+      /* Large Screen Optimization */
+      @media (min-width: 1200px) {
+        body {
+          padding: 0 8%;
+        }
+
+        .ai_section {
+          padding: 4rem 3rem;
+        }
+
+        .pricing-options {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .ai_designs_container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ai-footer-container {
+          flex-direction: column;
+        }
+      }
+
+      /* Animation utilities */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      /* Overlay for mobile menu */
+      .menu-overlay {
+        position: fixed;
+        /* top: 0;
+        left: 0; */
+        /* width: 100%;
+        height: 100%; */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* z-index: 998; */
+        opacity: 0;
+        /* visibility: hidden; */
+        transition: all 0.3s ease;
+      }
+
+      .menu-toggle:checked ~ .menu-overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* THE LAST SECTION */
+      .ai-footer {
+        background-color: #1c1c1e;
+        width: 100%;
+        border-radius: 12px;
+        margin-top: 8rem;
+        margin-bottom: 4rem;
+      }
+      .ai-footer-container {
+        margin: 0 5% 8% 5%;
+        flex-wrap: wrap;
+      }
+      .ai-footer-container-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex: 2;
+        margin: 5% 10% 2% 1%;
+        z-index: 1000;
+        /* border-bottom: 1px solid #333; */
+      }
+
+      .ai-footer-container-logo p {
+        font-size: 1.3rem;
+        margin: 0;
+      }
+
+      .ai-footer-container-logo img {
+        width: 40px;
+
+        height: 40px;
+      }
+      .ai-footer-container-content {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+        gap: 2rem;
+        flex: 1;
+
+        /* padding: 8px; */
+        border-bottom: 1px solid #333;
+        /* width: 100%; */
+        /* height: 90%; */
+        /* border: 1px solid blue; */
+      }
+      .ai-footer-container-links ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        gap: 1rem;
+        width: 100%;
+        flex-direction: row;
+        justify-self: self-end;
+        /* border: 1px solid blue; */
+        flex-wrap: wrap;
+      }
+      .ai-footer-container-links {
+        margin: 5% 5% 2% 10%;
+        flex-wrap: wrap;
+        width: 800px;
+      }
+      .ai-footer-policy {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        opacity: 1;
+      }
+      .ai-policy {
+        gap: 1rem;
+        display: flex;
+      }
+      @media (max-width:973px) {
+        
+        .ai-footer-container-links ul{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width:400px) {
+          .ai-footer-container-content{
+            display: flex;
+            flex-direction: column;
+            width: 0;
+            padding: 0;
+            margin: 0;           
+          }
+          
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav_logos">
+          <img src="./public/NaijaIcon.png" alt="NajAI Logo" />
+          <p>NajAI</p>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="menu-overlay"></div>
+
+        <div class="ai_templates" id="navMenu">
+          <ul>
+            <!-- <li><a href="">More Templates</a></li> -->
+            <li><a href="">Home</a></li>
+            <li><a href="">How it works</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Pricing</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="ai_section" id="home">
+      <div class="ai_leftchild">
+        <div class="ai_text">
+          <h1>
+            Your AI-Powered <br />
+            <span>Design</span> Assistant
+          </h1>
+          <p>
+            Unlock your creative potential. Seamlessly generate, customize,<br />
+            and perfect your designs with cutting-edge AI technology.
+          </p>
+          <div class="ai_button">
+            <button class="btn1">Remix Template</button>
+            <a href="#templates">More Templates</a>
+          </div>
+        </div>
+      </div>
+      <div class="ai_rightchild">
+        <img src="./public/hero_image.png" alt="AI Design Hero" />
+      </div>
+    </section>
+
+    <section class="ai_section2">
+      <div class="ai_section2_logo">
+        <img src="./public/Logo_1.png" class="logo" alt="Partner Logo 1" />
+        <img src="./public/Logo_2.png" class="logo" alt="Partner Logo 2" />
+        <img src="./public/Logo_3.png" class="logo" alt="Partner Logo 3" />
+        <img src="./public/Logo_4.png" class="logo" alt="Partner Logo 4" />
+        <img src="./public/Logo_5.png" class="logo" alt="Partner Logo 5" />
+      </div>
+    </section>
+
+    <section class="ai_section3" id="how-it-works">
+      <div class="ai_creativity">
+        <h1>Unleash Your <span>Creativity</span></h1>
+        <p>
+          Discover how AI-powered design assistant transforms your ideas into
+          stunning <br />designs effortlessly. Follow these simple steps to turn
+          your vision into reality.
+        </p>
+      </div>
+      <div class="ai_designs_container">
+        <div class="ai_designs">
+          <img src="./public/arrowuponsquare.svg" alt="Upload Brief" />
+          <h5>Upload Brief</h5>
+          <p>Share your project details and let our AI grasp your vision.</p>
+        </div>
+        <div class="ai_designs">
+          <img src="./public/rocket.svg" alt="Generate Designs" />
+          <h5>Generate Designs</h5>
+          <p>Watch as our AI crafts unique design ideas tailored to you.</p>
+        </div>
+        <div class="ai_designs">
+          <img src="./public/spark.svg" alt="Refine Creation" />
+          <h5>Refine Creation</h5>
+          <p>Perfect your chosen concept with easy-to-use AI tools.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai_section4" id="features">
+      <div class="ai_free_resolution">
+        <div class="ai_resolution">
+          <h5>
+            High-Resolution <br />
+            Outputs
+          </h5>
+          <p>
+            Download your final designs in high-resolution formats suitable for
+            print and digital use. Ensure your work looks professional and
+            polished in any medium.
+          </p>
+          <button class="btn2">Get started</button>
+        </div>
+        <div class="ai_rightchild_resolution">
+          <img src="./public/card_image.png" alt="High Resolution Output" />
+        </div>
+      </div>
+    </section>
+
+    <section class="ai_section5">
+      <div class="ai_free_resolution">
+        <div class="ai_rightchild_resolution">
+          <img src="./public/real_time_image.png" alt="Real Time Collaboration" />
+        </div>
+        <div class="ai_resolution">
+          <h5>
+            Real-Time <br />
+            Collaboration
+          </h5>
+          <p>
+            Seamlessly collaborate with your team in real-time. Share ideas,
+            give feedback, and make edits together, no matter where you are.
+          </p>
+          <button class="btn2">Get started</button>
+        </div>
+      </div>
+    </section>
+    <section class="ai_section6">
+      <div class="ai_free_resolution">
+        <div class="ai_resolution">
+          <h5>
+            Advanced Scheduling <br />
+            Tools
+          </h5>
+          <p>
+            Plan and schedule your design projects with ease. Use our scheduling
+            tools to set deadlines, track milestones, and ensure timely delivery
+            of your design work.
+          </p>
+          <button class="btn2">Get started</button>
+        </div>
+        <div class="ai_rightchild_resolution">
+          <img src="./public/schelding.png" alt="Scheduling Tools" />
+        </div>
+      </div>
+    </section>
+
+    <section class="ai_section7">
+      <div class="ai_reality">
+        <h1>
+          Transforming <br />
+          Imagination into <span>Reality</span>
+        </h1>
+        <p>
+          Experience the perfect blend of innovation and creativity. Our AI
+          technology transforms your wildest ideas into stunning visual
+          realities.
+        </p>
+      </div>
+      <div class="ai_comment_container">
+        <div class="ai_comments1">
+          <div class="ai_comment_images">
+            <h6>
+              Dive into the world of AI where possibilities are limitless. Let
+              the cutting-edge technology break your concepts into breathtaking
+              visuals.
+            </h6>
+            <img src="./public/arrowRightTop.svg" alt="Arrow" />
+          </div>
+          <h2>Witness the Future</h2>
+        </div>
+        <div class="ai_comments2">
+          <div class="ai_comment_images">
+            <h5>
+              Step beyond the ordinary with designs that defy conventions. Our
+              AI conjures up imaginative visuals that push the boundaries of
+              creativity.
+            </h5>
+            <img src="./public/arrowRightTop.svg" alt="Arrow" />
+          </div>
+          <h2>Visualize the Impossible</h2>
+        </div>
+      </div>
+      <div class="ai_comment_container">
+        <div class="ai_comments2">
+          <div class="ai_comment_images">
+            <h5>
+              Experience the perfect blend of form and function. Our AI ensures
+              that every design not only looks stunning but also serves its
+              purpose flawlessly.
+            </h5>
+            <img src="./public/arrowRightTop.svg" alt="Arrow" />
+          </div>
+          <h2>Energy and Style</h2>
+        </div>
+        <div class="ai_comments1">
+          <div class="ai_comment_images">
+            <h6>
+              Embrace the elegance of meticulously crafted designs. Our AI
+              polishes every detail to bring a timeless quality to your creative
+              projects.
+            </h6>
+            <img src="./public/arrowRightTop.svg" alt="Arrow" />
+          </div>
+          <h2>Timeless Precision</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai_plans_container">
+      <div class="ai_plans">
+        <h1>
+          Affordable Plans for <br />
+          <span>Every Need</span>
+        </h1>
+        <p>
+          Choose the perfect planfor your design projects, from startups to
+          enterprises. <br />Our pricing tiers are designed to offer flexibility
+          and value, ensuring you get the most out <br />
+          of our AI-powered design assistant
+        </p>
+      </div>
+      <div class="pricing-options">
+        <div class="pricing-option">
+          <div class="pricing-option-subcontainer">
+            <div class="pricing_option_subcontainer_content">
+              <h5>Free</h5>
+              <h1>$0/m</h1>
+              <p>Free forever</p>
+            </div>
+            <ul class="pricing-options-ul">
+              <li>Basic AI-generated designs</li>
+              <li>Access to customization tools</li>
+              <li>Standard templates library</li>
+              <li>5 projects per month</li>
+            </ul>
+          </div>
+
+          <button class="pricing-options-btn">Get started</button>
+        </div>
+
+        <div class="pricing-option">
+          <div class="pricing-option-subcontainer">
+            <div class="pricing_option_subcontainer_content">
+              <h5>Basic</h5>
+              <h1>$14.99/m</h1>
+              <p>Billed monthly</p>
+            </div>
+            <ul class="pricing-options-ul">
+              <li>Basic AI-generated designs</li>
+              <li>Access to customization tools</li>
+              <li>Standard templates library</li>
+              <li>5 projects per month</li>
+              <li>5 projects per month</li>
+            </ul>
+          </div>
+          <button class="pricing-options-btn">Get started</button>
+        </div>
+
+        <div class="pricing-option">
+          <div class="pricing-option-subcontainer">
+            <div class="pricing_option_subcontainer_content">
+              <h5>PRO</h5>
+              <h1>$29.99/m</h1>
+              <p>Billed monthly</p>
+            </div>
+            <ul class="pricing-options-ul">
+              <li>Basic AI-generated designs</li>
+              <li>Access to customization tools</li>
+              <li>Standard templates library</li>
+              <li>5 projects per month</li>
+              <li>Standard templates library</li>
+              <li>5 projects per month</li>
+            </ul>
+          </div>
+          <button class="pricing-options-btn">Get started</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai_section3">
+      <div class="ai_creativity">
+        <h1>Customer <span>Success</span> <br />Stories</h1>
+        <p>
+          Discover how AI-powered design assistant transforms your ideas into
+          stunning <br />
+          designs effortlessly. Follow these simple steps to turn your vision
+          into reality
+        </p>
+      </div>
+      <div class="ai_designs_container">
+        <div class="ai_designs-container_contents">
+          <div class="ai_designs1">
+            <img src="./public/user1.png" alt="" />
+            <p>John D.</p>
+          </div>
+          <div class="ai_designs_content">
+            <h4>
+              Using this AI-powered design assistant has <br />
+              completely transformed the way I approach my projects. It is like
+              having a professional designer <br />
+              on call 24/7. Highly recommend it!!
+            </h4>
+          </div>
+        </div>
+        <div class="ai_designs-container_contents">
+          <div class="ai_designs1">
+            <img src="./public/user2.png" alt="" />
+            <p>Micheal S.</p>
+          </div>
+          <div class="ai_designs_content">
+            <h4>
+              The design suggestions are spot on and the <br />
+              automated features save me so much time. i can <br />
+              focus more on creativity rather than getting <br />
+              bogged down in details
+            </h4>
+          </div>
+        </div>
+        <div class="ai_designs-container_contents">
+          <div class="ai_designs1">
+            <img src="./public/user3.png" alt="" />
+            <p>David L.</p>
+          </div>
+          <div class="ai_designs_content">
+            <h4>
+              This tool is a game changer!! It is incredibly <br />
+              intuitive and the results are always impressive. <br />
+              I cannot imagine working without it now.
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-container">
+        <div class="faq-left">
+          <h2>Frequently Asked <br /><span>Questions</span></h2>
+          <p>
+            Have questions about our AI-Powered Design Assistant? Find <br />
+            answers to the most common questions and learn how our
+            <br />platform can enhance your creative process.
+          </p>
+        </div>
+        <div class="faq-right">
+          <div class="faq-item">
+            <button class="faq-question">
+              How does the AI generate designs?
+            </button>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I customize the AI-generated designs?
+            </button>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What support options are available?
+            </button>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is there a free trial available?
+            </button>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How secure is my data?</button>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What integrations are available?
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="ai_section">
+      <div class="ai_leftchild">
+        <div class="ai_text">
+          <h2 class="ai_text_content">
+            Start your design <br />
+            <span>Journey</span> Today
+          </h2>
+          <p>
+            Unlock your creative potential. Seamlessly generate, customize,
+            <br />
+            and perfect your designs with cutting-edge AI technology. Remix
+            Template
+          </p>
+          <div class="ai_button">
+            <button class="btn1">Remix Template</button>
+            <a href="">More Templates</a>
+          </div>
+        </div>
+      </div>
+      <div class="ai_rightchild">
+        <img src="hero_image.png" alt="" />
+      </div>
+    </section> -->
+
+    <section class="section-insights">
+      <h1>Stay Inspired with Our Latest <span>Insights</span></h1>
+      <p>
+        Dive into our blog for the latest trends, tips, and insights in the
+        world of design and AI <br />technology. Whether you’re looking for
+        inspiration, tutorials, or industry news, our articles <br />
+        are crafted to keep you informed and inspired.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <img src="./public/BlueFlower.png" alt="Design 1" />
+          <div class="card-content">
+            <div class="card-meta">
+              <span>Apr 8, 2022</span>
+              <span>6 min read</span>
+            </div>
+            <div class="card-title">
+              Starting and Growing a Career in Web Design
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="./public/BlueFlower2.png" alt="Design 2" />
+          <div class="card-content">
+            <div class="card-meta">
+              <span>Mar 15, 2022</span>
+              <span>5 min read</span>
+            </div>
+            <div class="card-title">
+              Create a Landing Page That Performs Great
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="./public/BlueFlower3.png" alt="Design 3" />
+          <div class="card-content">
+            <div class="card-meta">
+              <span>Feb 28, 2022</span>
+              <span>7 min read</span>
+            </div>
+            <div class="card-title">
+              How Can Designers Prepare for the Future?
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="read-more">Read More</a>
+    </section>
+
+    <section class="ai-sights">
+      <div class="ai-sights-container">
+        <div class="ai-sights-leftchild">
+          <h1>
+            Start Your Design <br />
+            <span>Journey</span> Today
+          </h1>
+          <p>
+            Sign up now and experience the power of AI-driven <br />design
+            without any commitment
+          </p>
+          <button>Get started</button>
+        </div>
+
+        <div class="ai-sights-right-child">
+          <img src="./public/hero_image.png" alt="" srcset="" />
+        </div>
+      </div>
+    </section>
+    <section class="ai-footer">
+      <div class="ai-footer-container">
+        <div class="ai-footer-container-content">
+          <div class="ai-footer-container-logo">
+            <img src="./public/NaijaIcon.png" alt="" />
+            <p>NajAI</p>
+          </div>
+          <div class="ai-footer-container-links">
+            <ul>
+              <li>How it works</li>
+              <li>Features</li>
+              <li>Pricing</li>
+              <li>Blogs</li>
+              <li>Faqs</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ai-footer-policy">
+          <p class="ai-policy-container">
+            Made by Praise Jibola lPowered by Framer
+          </p>
+          <div class="ai-policy">
+            <p>Privacy Policy</p>
+            <p>Terms & conditions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
